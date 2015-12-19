@@ -135,4 +135,16 @@
     }
   }
 
+  document.querySelector('.version-select').addEventListener('change', function (e) {
+    var version = e.target.value
+    var section = window.location.pathname.match(/\/(\w+?)\//)[1]
+
+    if (version.indexOf('1.') !== 0) {
+      version = version.replace('.', '')
+      window.location.assign('http://' + version + '.vuejs.org/' + section + '/')
+    } else {
+      window.location.assign('http://vuejs.org/' + section + '/')
+    }
+  })
+
 })()
